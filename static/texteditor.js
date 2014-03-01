@@ -75,7 +75,7 @@ var textEditor = {
 			// default
 
 			// Add a line and updates the row numbers
-			addRow(textRow);
+			textEditor.addRow(textRow);
 		}
 
 		// If the delete key was pressed
@@ -116,13 +116,13 @@ var textEditor = {
 
 		// Move the cursor to the new .text-row input
 		newTextRow.focus();
-
 		// Activate the new row
+		textEditor.activateRow(newTextRow);
 		// Deactivate this row
+		textEditor.deactivateRow(textRow);
 
 		// Renumber the rows
-		editor.updateNums();
-
+		textEditor.updateNums();
 	},
 
 	removeRow: function (textRow) {
