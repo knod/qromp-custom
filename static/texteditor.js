@@ -37,9 +37,10 @@ var textEditor = {
 		$("#num-gutter").append(newNumRow);
 
 		// Make sure .num-row height matches .text-row height
-		$(newNumRow).outerHeight($(newTextRow).outerHeight());
+		newNumRow.outerHeight(newTextRow.outerHeight());
 
 		// Make the new row active
+		textEditor.activateRow(newTextRow);
 
 		// Do we want to focus the mouse here at the start?
 		newTextRow.focus();
@@ -51,9 +52,6 @@ var textEditor = {
 		Calls further function depending on
 		value of key.
 		*/
-
-		// Testing
-		console.log("Using textRow: " + textRow.attr("class"));
 
 		// AN ISSUE:
 		// The first text input does not have row one
@@ -163,7 +161,9 @@ var textEditor = {
 		*/
 
 		// Change textRow's color
+		textRow.css("background", this.activeTextRow);
 		// Change color of textRow's numRow data value
+		textRow.data("numRow").css("background", this.activeNumRow);
 	},
 
 	deactivateRow: function (textRow) {
