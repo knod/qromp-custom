@@ -115,7 +115,7 @@ a:hover {
 	width: auto;
 	font-size: 15px;
 	overflow: scroll;
-	background: lightblue;
+	/*background: lightblue;*/
 }
 
 .num-row {
