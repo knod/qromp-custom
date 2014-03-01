@@ -4,6 +4,7 @@
 * 
 * Sources:
 * 1. http://stackoverflow.com/questions/7745867/how-do-you-get-the-cursor-position-in-a-textarea
+* 2. http://stackoverflow.com/questions/6683046/how-do-i-move-the-cursor-to-the-front-of-a-textbox-which-has-text-in-it
 * 
 * ToDo:
 * - FIGURE OUT WHY A TEXTAREA HAS AN EXTRA SPACE AT THE
@@ -107,37 +108,60 @@ var textEditor = {
 
 			// If this isn't the first row
 			if ( Math.max(0, $(".text-row").index($textRow)) ) {
+
 				// Get the cursor position. Sources (1)
 				var cursorPos = $textRow.prop("selectionStart");
-				// Testing
-				console.log("cursorPos: " + cursorPos);
 
 				// If the cursor is at the start position
-				// Move the cursor to the previous input field
-				if (!cursorPos) {$textRow.prev().focus();}
-				// Set cursor position to end of textarea
+				if (!cursorPos) {
+
+					// Get the previous .text-row element
+					// for some reason this doesn't work
+					// Comes out as undefined
+					var $prevTextRow = $textRow.prev();
+
+					// Get the length of the prev textarea
+					var textLength = $textRow.prev().val().length;
+					// Testing
+					console.log("new textLength: " + textLength);
+
+					$textRow.prev()
+					// Move the cursor to the prev input field
+					.focus()
+					// !!! NONE OF THIS IS WORKING !!!
+					// Set cursor position to end of prev textarea.
+					// Sources (2)
+					.prop("selectionStart", textLength)
+					.prop("selectionEnd", textLength);
+				}
 			}
 		}
 
 		// If the down arrow key was pressed
 		else if (key.keyCode == 40) {
+
 			// If this isn't the last row
-			if ( $(".text-row").index($textRow) != ($(".text-row").length - 1) ) {
+			if ( $(".text-row").index($textRow) !=
+				($(".text-row").length - 1) ) {
 
 				// Get the length of the text in the textarea
 				var textLength = $textRow.val().length;
-				// Testing
-				console.log("num characters: " + textLength);
 				// Get the cursor position. Sources (1)
 				// Selection end in case they had something selected
 				var cursorPos = $textRow.prop("selectionEnd");
-				// Testing
-				console.log("cursorPos: " + cursorPos);
 
 				// If the cursor is at the end of the text area
-				// Move the cursor to the next input field
-				if (cursorPos == textLength) {$textRow.next().focus();}
-				// Set cursor position to start of textarea
+				if (cursorPos == textLength) {
+					$textRow.next()
+					// Move the cursor to the next input field
+					.focus()
+					// Set cursor position to start of next textarea.
+					// Sources (2)
+					// Unfortunately, it goes to the second line
+					// in the text area
+					.prop("selectionStart", 0)
+					.prop("selectionEnd", 0);
+				}
 			}
 		}
 
