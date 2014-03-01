@@ -59,8 +59,11 @@ var textEditor = {
 	keyFilter: function (key, $textRow) {
 		/* (int) -> None
 
-		Calls further function depending on
-		value of key.
+		Resizes current .num-row on any keypress, calls
+		further function depending on value of key. Also
+		resizes current row on 
+		enter: 13, delete: 8, left: 37, up: 38,
+		right: 39, down: 40,
 		*/
 
 		// Always resize this .num-row to match this .text-row
