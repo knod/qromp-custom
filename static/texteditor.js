@@ -5,6 +5,8 @@
 * ToDo:
 * 1. Do we want the bottom line of the enditor to remain
 * blank for the evaluate button
+* 2. The first text input does not have row one
+* as it's data value
 * 
 */
 
@@ -22,6 +24,12 @@ var editor = {
 		value of key.
 		*/
 
+		// AN ISSUE:
+		// The first text input does not have row one
+		// as it's data value
+
+		// We can do just this one instead of cycling through
+		// all of them. Once we fix that issue
 		// Always resize the number row to match the text row
 		// This only matters if we make text areas work
 		// HOW THE HELL DO WE GET RID OF THE LINE AT THE END
@@ -86,6 +94,8 @@ var editor = {
 		then numbers the rows appropriately. Moves curosr
 		to the previous input field.
 		*/
+
+		// Do not remove the first row
 
 		// Move the cursor to the previous input field
 		// Remove the .num-row in this .text-row's data value
