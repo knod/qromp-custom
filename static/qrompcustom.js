@@ -23,7 +23,8 @@ $(document).ready(function () {
 
 		// ** Should thid be on keypress instead in case
 		// they hold a key down?
-		// Affect input fields
+		// Affect input fields (not jQuery object for regular
+		// js functions)
 		textEditor.keyFilter(key, $this);
 	})
 	.on("focus", ".text-row", function () {

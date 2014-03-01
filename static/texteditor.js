@@ -14,7 +14,7 @@
 * though this should be better once we make the initial
 * textarea just one line high. .val("") doesn't work.
 * - Figure out why .num-row height doesn't change when
-* pasting text.
+* pasting text or deleting selected text.
 * - Figure out why height of .text-row changes so that
 * we don't have to cycle through all the .text-rows to
 * get the right height.
@@ -53,15 +53,20 @@ var textEditor = {
 		$("#text-areas").append($newTextRow);
 		$("#num-gutter").append($newNumRow);
 
+		// Size text area to contents
+		textEditor.resizeTextArea($newTextRow);
 		// Make sure .num-row height matches .text-row height
 		$newNumRow.outerHeight($newTextRow.outerHeight());
 
 		// Do we want to focus the mouse here at the start?
 		$newTextRow.focus();
+		// Somehow the focus() is not triggering activateRow()
+
+		textEditor.activateRow($newTextRow);
 	},
 
 	keyFilter: function (key, $textRow) {
-		/* (int) -> None
+		/* (int, jQuery collection) -> None
 
 		Resizes current .num-row on any keypress, calls
 		further function depending on value of key. Also
@@ -70,13 +75,12 @@ var textEditor = {
 		right: 39, down: 40,
 		*/
 
+		// Sizes the textarea to the contents
+		textEditor.resizeTextArea($textRow);
 		// Always resize this .num-row to match this .text-row
 		// This only matters if we make text areas work
 		// HOW THE HELL DO WE GET RID OF THE LINE AT THE END
 		$textRow.data("numRow").outerHeight($textRow.outerHeight());
-
-		// Expands the input textarea size to show all text
-		$textRow.autosize();
 
 		// If the enter key was pressled
 		if (key.keyCode == 13) {
@@ -105,7 +109,6 @@ var textEditor = {
 
 		// If the up arrow key was pressed
 		else if (key.keyCode == 38) {
-
 			// If this isn't the first row
 			if ( Math.max(0, $(".text-row").index($textRow)) ) {
 
@@ -122,8 +125,6 @@ var textEditor = {
 
 					// Get the length of the prev textarea
 					var textLength = $textRow.prev().val().length;
-					// Testing
-					console.log("new textLength: " + textLength);
 
 					$textRow.prev()
 					// Move the cursor to the prev input field
@@ -131,14 +132,21 @@ var textEditor = {
 					// !!! NONE OF THIS IS WORKING !!!
 					// Set cursor position to end of prev textarea.
 					// Sources (2)
-					.prop("selectionStart", textLength)
-					.prop("selectionEnd", textLength);
+					.prop("setSelectionRange", textLength, textLength);
+					// .prop("selectionStart", textLength)
+					// .prop("selectionEnd", textLength);
+
+					// For when textarea has/had multiple rows
+					key.stopPropagation();
+					key.preventDefault();
 				}
 			}
 		}
 
 		// If the down arrow key was pressed
 		else if (key.keyCode == 40) {
+
+
 
 			// If this isn't the last row
 			if ( $(".text-row").index($textRow) !=
@@ -161,6 +169,10 @@ var textEditor = {
 					// in the text area
 					.prop("selectionStart", 0)
 					.prop("selectionEnd", 0);
+
+					// For when textarea has/had multiple rows
+					key.stopPropagation();
+					key.preventDefault();
 				}
 			}
 		}
@@ -188,6 +200,15 @@ var textEditor = {
 		// Append new .num-row using the current .text-row's data
 		$textRow.data("numRow").after($newNumRow);
 
+		// Move the cursor to the new .text-row input
+		$newTextRow.focus();
+
+		// Re-number the rows
+		textEditor.updateNums();
+
+		// This only comes after?
+		// Expands the input textarea size to show all text
+		textEditor.resizeTextArea($newTextRow);
 		// XMake newnumRow height same as newTextRow
 		// !!! WHY IS SOMETHING STILL GETTING EXTRA PADDING?!!
 		// Not padding, size of .text-row changes after creation
@@ -197,12 +218,6 @@ var textEditor = {
 			$this = $(this);
 			$this.data("numRow").outerHeight($this.outerHeight());
 		});
-
-		// Move the cursor to the new .text-row input
-		$newTextRow.focus();
-
-		// Re-number the rows
-		textEditor.updateNums();
 	},
 
 	removeRow: function ($textRow) {
@@ -259,5 +274,31 @@ var textEditor = {
 		$textRow.css("background", "");
 		// Remove color of $textRow's numRow data value
 		$textRow.data("numRow").css("background", "");
+	},
+
+	resizeTextArea: function ($elemToSize) {
+		// The other places that say (element) may need to say
+		// (jQuery element) or collection or something
+
+		/* (jQuery collection) -> (None)
+
+		Resizes the DOM element, not jQuery element/collection,
+		elemToSize to fit it's contents.
+		*/
+
+		// Too stupid to figure out how to pass DOM elements
+		// instead of jQuery collections, so we'll do it the
+		// messier jQuery way
+
+		// For some reason it's necessary to set it to 1px first
+	    // elemToSize.style.height = "1px";
+	    // jQuery way:
+	    $elemToSize.css("height","1px");
+	    // Gets, basically, the height of the contents
+	    // Don't know if this will actually make it the size we want,
+	    // but meh, it'll be close
+	    // elemToSize.style.height = (elemToSize.scrollHeight)+"px";
+	    // jQuery way:
+		$elemToSize.css("height", ($elemToSize.prop("scrollHeight"))+"px");
 	},
 }
