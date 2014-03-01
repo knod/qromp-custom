@@ -26,27 +26,27 @@ var textEditor = {
 		*/
 
 		// Create the .num-row div
-		var newNumRow = $("<div class='num-row'></div>");
+		var $newNumRow = $("<div class='num-row'></div>");
 		// Create the .text-row input
-		var newTextRow = $("<textarea class='text-row'></textarea>")
+		var $newTextRow = $("<textarea class='text-row'></textarea>")
 		// Store the .num-row as the .text-row's data value
-		.data("numRow", newNumRow);
+		.data("numRow", $newNumRow);
 
 		// Append them as the first in their divs
-		$("#text-areas").append(newTextRow);
-		$("#num-gutter").append(newNumRow);
+		$("#text-areas").append($newTextRow);
+		$("#num-gutter").append($newNumRow);
 
 		// Make sure .num-row height matches .text-row height
-		newNumRow.outerHeight(newTextRow.outerHeight());
+		$newNumRow.outerHeight($newTextRow.outerHeight());
 
 		// Make the new row active
-		textEditor.activateRow(newTextRow);
+		textEditor.activateRow($newTextRow);
 
 		// Do we want to focus the mouse here at the start?
-		newTextRow.focus();
+		$newTextRow.focus();
 	},
 
-	keyFilter: function (key, textRow) {
+	keyFilter: function (key, $textRow) {
 		/* (int) -> None
 
 		Calls further function depending on
@@ -58,6 +58,7 @@ var textEditor = {
 		// Always resize the number row to match the text row
 		// This only matters if we make text areas work
 		// HOW THE HELL DO WE GET RID OF THE LINE AT THE END
+
 		$(".num-row").each(function () {
 			$(this).outerHeight($(".text-row").outerHeight());
 		});
@@ -71,7 +72,7 @@ var textEditor = {
 			// default
 
 			// Add a line and updates the row numbers
-			textEditor.addRow(textRow);
+			textEditor.addRow($textRow);
 		}
 
 		// If the delete key was pressed
@@ -89,7 +90,7 @@ var textEditor = {
 
 	},
 
-	addRow: function (textRow) {
+	addRow: function ($textRow) {
 		/* (element) -> None
 
 		Adds divs below current input, one for the
@@ -99,29 +100,29 @@ var textEditor = {
 		*/
 
 		// Create the .num-row div
-		var newNumRow = $("<div class='num-row'></div>");
+		var $newNumRow = $("<div class='num-row'></div>");
 		// Create the .text-row input
-		var newTextRow = $("<textarea class='text-row'></textarea>")
+		var $newTextRow = $("<textarea class='text-row'></textarea>")
 		// Store the .num-row as the .text-row's data value
-		.data("numRow", newNumRow);
+		.data("numRow", $newNumRow);
 
 		// Append new text input under this text input
-		textRow.after(newTextRow);
+		$textRow.after($newTextRow);
 		// Append new .num-row using the current .text-row's data
-		textRow.data("numRow").after(newNumRow);
+		$textRow.data("numRow").after($newNumRow);
 
 		// Move the cursor to the new .text-row input
-		newTextRow.focus();
+		$newTextRow.focus();
 		// Activate the new row
-		textEditor.activateRow(newTextRow);
+		textEditor.activateRow($newTextRow);
 		// Deactivate this row
-		textEditor.deactivateRow(textRow);
+		textEditor.deactivateRow($textRow);
 
 		// Renumber the rows
 		textEditor.updateNums();
 	},
 
-	removeRow: function (textRow) {
+	removeRow: function ($textRow) {
 		/* (element) -> None
 
 		Deletes this input and it's matching .num-row,
@@ -149,28 +150,28 @@ var textEditor = {
 			});
 	},
 
-	activateRow: function (textRow) {
+	activateRow: function ($textRow) {
 		/* (element) -> None
 
-		Change the colors of textRow to the
+		Change the colors of $textRow to the
 		active colors.
 		*/
 
-		// Change textRow's color
-		textRow.css("background", this.activeTextRow);
-		// Change color of textRow's numRow data value
-		textRow.data("numRow").css("background", this.activeNumRow);
+		// Change $textRow's color
+		$textRow.css("background", this.activeTextRow);
+		// Change color of $textRow's numRow data value
+		$textRow.data("numRow").css("background", this.activeNumRow);
 	},
 
-	deactivateRow: function (textRow) {
+	deactivateRow: function ($textRow) {
 		/* (element) -> None
 
-		Remove the colors of textRow.
+		Remove the colors of $textRow.
 		*/
 
-		// Remove textRow's color
-		textRow.css("background", "");
-		// Remove color of textRow's numRow data value
-		textRow.data("numRow").css("background", "");
+		// Remove $textRow's color
+		$textRow.css("background", "");
+		// Remove color of $textRow's numRow data value
+		$textRow.data("numRow").css("background", "");
 	},
 }
