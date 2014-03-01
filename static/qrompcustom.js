@@ -9,8 +9,8 @@
 
 $(document).ready(function () {
 
-	// Make sure .num-row height matches .text-row height
-	$(".num-row").outerHeight($(".text-row").outerHeight());
+	// Create the first editor row
+	textEditor.firstRow();
 
 	// Depending on what key is pressed in an input field
 	$(".text-row").keydown(function (key) {
@@ -20,10 +20,10 @@ $(document).ready(function () {
 		// ** Should thid be on keypress instead in case
 		// they hold a key down?
 		// Affect input fields
-		editor.keyFilter(key, $this);
+		textEditor.keyFilter(key, $this);
 	})
 
 	// Testing
-	editor.updateNums()
+	textEditor.updateNums()
 
 })

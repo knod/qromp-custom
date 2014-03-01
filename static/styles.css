@@ -95,14 +95,14 @@ a:hover {
 	font-size: 15px;
 }
 
-#left-gutter {
+#num-gutter {
 	height: 100%;
 	width: 22px;
 	float: left;
 	background: #f0f0f0;
 }
 
-#row-container {
+#text-areas {
 	height: 100%;
 	width: auto;
 	font-size: 15px;

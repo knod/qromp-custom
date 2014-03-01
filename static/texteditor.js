@@ -10,12 +10,40 @@
 * 
 */
 
-var editor = {
+var textEditor = {
 	/* Enclosure for text editor functions */
 
 	// The colors for an activated row
 	activeNumRow: "#dcdcdc",
 	activeTextRow: "#f0f0f0",
+
+	firstRow: function () {
+		/* (None) -> None
+
+		Creates the first text editor row. Why here?
+		Because we want to have the .num-row and the
+		.text-row paired.
+		*/
+
+		// Create the .num-row div
+		var newNumRow = $("<div class='num-row'></div>");
+		// Create the .text-row input
+		var newTextRow = $("<textarea class='text-row'></textarea>")
+		// Store the .num-row as the .text-row's data value
+		.data("numRow", newNumRow);
+
+		// Append them as the first in their divs
+		$("#text-areas").append(newTextRow);
+		$("#num-gutter").append(newNumRow);
+
+		// Make sure .num-row height matches .text-row height
+		$(newNumRow).outerHeight($(newTextRow).outerHeight());
+
+		// Make the new row active
+
+		// Do we want to focus the mouse here at the start?
+		newTextRow.focus();
+	},
 
 	keyFilter: function (key, textRow) {
 		/* (int) -> None
