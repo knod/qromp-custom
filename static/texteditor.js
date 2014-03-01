@@ -100,7 +100,16 @@ var textEditor = {
 		}
 
 		// If the up arrow key was pressed
+		else if (key.keyCode == 38) {
+			// If this isn't the first row
+			if ( Math.max(0, $(".text-row").index($textRow)) ) {
+				// Move the cursor to the previous input field
+				$textRow.prev().focus();
+			}
+		}
+
 		// If the down arrow key was pressed
+		else if (key.keyCode == 40) {}
 
 	},
 
