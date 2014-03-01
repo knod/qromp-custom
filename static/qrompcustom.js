@@ -15,10 +15,12 @@ $(document).ready(function () {
 	// Depending on what key is pressed in an input field
 	$(".text-row").keydown(function (key) {
 
+		// Identify this textRow
+		var $this = $(this)
 		// ** Should thid be on keypress instead in case
 		// they hold a key down?
 		// Affect input fields
-		editor.keyFilter(key);
+		editor.keyFilter(key, $this);
 	})
 
 	// Testing

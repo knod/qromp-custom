@@ -15,7 +15,7 @@ var editor = {
 	activeNumRow: "#dcdcdc",
 	activeTextRow: "#f0f0f0",
 
-	keyFilter: function (key) {
+	keyFilter: function (key, textRow) {
 		/* (int) -> None
 
 		Calls further function depending on
@@ -36,7 +36,7 @@ var editor = {
 		if (key.keyCode == 13) {
 
 			// Add a line and updates the row numbers
-
+			addLine(textRow);
 		}
 
 		// If the delete key was pressed
@@ -60,18 +60,14 @@ var editor = {
 		input field
 		*/
 
-		// WITH DATA VALUES
-		// How do we match up the number row to the
-		// text row
-
-		// Does that matter? it can just add a number
-		// row anywhere
-
-		// Hmmm, but we have to make it actvie...
-
 		// Create the .num-row div
+		var newNumRow = $("<div class='num-row'></div>");
 		// Create the .text-row input
+		var newTextRow = $("<textarea class='text-row'></textarea>")
 		// Store the .num-row as the .text-row's data value
+		.data("numRow", newNumRow);
+
+		// Append the new text input under this text input
 		// Append the divs to editor using the current .text-row's
 		// .num-row data value to add the new .num-row
 		// Move the cursor to the new .text-row input
