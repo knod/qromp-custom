@@ -58,10 +58,7 @@ var textEditor = {
 		// Always resize the number row to match the text row
 		// This only matters if we make text areas work
 		// HOW THE HELL DO WE GET RID OF THE LINE AT THE END
-
-		$(".num-row").each(function () {
-			$(this).outerHeight($(".text-row").outerHeight());
-		});
+		$textRow.data("numRow").outerHeight($textRow.outerHeight());
 
 		// Expands the input textarea size to show all text
 		$textRow.autosize();
