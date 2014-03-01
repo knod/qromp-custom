@@ -21,7 +21,10 @@ var editor = {
 		// Always resize the number row to match the text row
 		// This only matters if we make text areas work
 		// HOW THE HELL DO WE GET RID OF THE LINE AT THE END
-		$(".num-row").outerHeight($(".text-row").outerHeight());
+		$(".num-row").each(function () {
+			$(this).outerHeight($(".text-row").outerHeight());
+		});
+
 		// $(".text-row").elastic();
 
 		// If the enter key was pressled

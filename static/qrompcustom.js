@@ -9,6 +9,7 @@
 
 $(document).ready(function () {
 
+	// Make sure .num-row height matches .text-row height
 	$(".num-row").outerHeight($(".text-row").outerHeight());
 
 	// Depending on what key is pressed in an input field
