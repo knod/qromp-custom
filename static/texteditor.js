@@ -101,15 +101,33 @@ var textEditor = {
 
 		// If the up arrow key was pressed
 		else if (key.keyCode == 38) {
+
 			// If this isn't the first row
 			if ( Math.max(0, $(".text-row").index($textRow)) ) {
-				// Move the cursor to the previous input field
-				$textRow.prev().focus();
+				// Get the cursor position
+				var cursorPos = $textRow.prop("selectionStart");
+				// Testing
+				console.log("cursorPos: " + cursorPos);
+
+				// If the cursor is at the start position
+					// Move the cursor to the previous input field
+				if (!cursorPos) {$textRow.prev().focus();}
 			}
 		}
 
-		// If the down arrow key was pressed
-		else if (key.keyCode == 40) {}
+		// // If the down arrow key was pressed
+		// else if (key.keyCode == 40) {
+		// 	if ( Math.max(0, $(".text-row").index($textRow)) ) {
+		// 		// Get the length of the text in the textarea
+		// 		var textLength = $textRow.val().length;
+		// 		console.log("num characters: " + textLength);
+		// 		// Get the cursor position
+		// 		var cursorPos = $(textRow).prop("selectionStart");
+		// 		console.log("cursorPos: " + cursorPos);
+		// 		// If the cursor is at the end of the text area
+		// 		if ()
+		// 	}
+		// }
 
 	},
 
