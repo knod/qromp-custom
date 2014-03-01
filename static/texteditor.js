@@ -60,6 +60,7 @@ var editor = {
 		input field
 		*/
 
+		// WITH DATA VALUES
 		// How do we match up the number row to the
 		// text row
 
