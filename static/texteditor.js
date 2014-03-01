@@ -1,6 +1,11 @@
 /* knod 02/28/14
 * texteditor.js
 * Manages the changing inputs of the visualizer's editor
+* 
+* ToDo:
+* 1. Do we want the bottom line of the enditor to remain
+* blank for the evaluate button
+* 
 */
 
 var editor = {
@@ -13,7 +18,6 @@ var editor = {
 		value of key.
 		*/
 
-		
 		// Always resize the number row to match the text row
 		// This only matters if we make text areas work
 		// HOW THE HELL DO WE GET RID OF THE LINE AT THE END

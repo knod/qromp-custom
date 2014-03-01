@@ -1,9 +1,9 @@
 /* knod 02/28/14
 * The general functions for qromp, quantum computer simulator
 * 
-* Notes:
-* 1. Do we want the bottom line of the enditor to remain
-* blank for the evaluate button
+* ToDo:
+* 2. Should text editor functions be called on keypress
+* instead in case they hold a key down?
 * 
 */
 
@@ -13,6 +13,9 @@ $(document).ready(function () {
 
 	// Depending on what key is pressed in an input field
 	$(".text-row").keydown(function (key) {
+
+		// ** Should thid be on keypress instead in case
+		// they hold a key down?
 		// Affect input fields
 		editor.keyFilter(key);
 	})
