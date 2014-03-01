@@ -115,30 +115,16 @@ a:hover {
 	padding: 1px 4px 1px 0;
 }
 
-#num-r1 {
-	background-color: #dcdcdc;
-}
-
 .text-row {
 	/*height: 100%;*/
-	width: 90%;
 	outline: none;
 	display: block;
 	margin: 0;
 	padding: 1px 6px;
-	width: 98.5%;
+	width: 97.5%;
 	font-size: 15px;
 	border: none;
 	resize: none;
-}
-
-/* Parent of active row will need to have background color */
-#text-r2 {
-	background: lightgray;
-}
-
-#text-r1 {
-	background: #f0f0f0;
 }
 
 /*#z-test {
