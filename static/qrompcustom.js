@@ -18,15 +18,15 @@ $(document).ready(function () {
 	$("#text-areas").on("keydown", ".text-row", function (key) {
 
 		// Identify this .text-row
-		var $this = $(this)
+		var $this = $(this);
 
 		// ** Should thid be on keypress instead in case
 		// they hold a key down?
 		// Affect input fields
 		textEditor.keyFilter(key, $this);
-	})
+	});
 
 	// Testing
-	textEditor.updateNums()
+	textEditor.updateNums();
 
 })
