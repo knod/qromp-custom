@@ -173,6 +173,8 @@ var textEditor = {
 		*/
 
 		// Remove textRow's color
+		textRow.css("background", "");
 		// Remove color of textRow's numRow data value
+		textRow.data("numRow").css("background", "");
 	},
 }
