@@ -24,6 +24,9 @@ var editor = {
 		value of key.
 		*/
 
+		// Testing
+		console.log("Using textRow: " + textRow.attr("class"));
+
 		// AN ISSUE:
 		// The first text input does not have row one
 		// as it's data value
@@ -80,10 +83,14 @@ var editor = {
 		// Store the .num-row as the .text-row's data value
 		.data("numRow", newNumRow);
 
-		// Append the new text input under this text input
-		// Append the divs to editor using the current .text-row's
-		// .num-row data value to add the new .num-row
+		// Append new text input under this text input
+		textRow.after(newTextRow);
+		// Append new .num-row using the current .text-row's data
+		textRow.data("numRow").after(newNumRow);
+
 		// Move the cursor to the new .text-row input
+		newTextRow.focus();
+
 		// Activate the new row
 		// Deactivate this row
 
