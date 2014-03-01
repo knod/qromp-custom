@@ -27,12 +27,12 @@ $(document).ready(function () {
 		textEditor.keyFilter(key, $this);
 	})
 	.on("focus", ".text-row", function () {
-		var $this = $(this)
-		textEditor.activateRow($this);
+		// Color the focused row the active colors
+		textEditor.activateRow($(this));
 	})
 	.on("blur", ".text-row", function () {
-		var $this = $(this)
-		textEditor.deactivateRow($this);
+		// Remove the color from the unfocused rows
+		textEditor.deactivateRow($(this));
 	})
 	;
 
