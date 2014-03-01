@@ -143,10 +143,14 @@ var textEditor = {
 		to the previous input field.
 		*/
 
-				// Move the cursor to the previous input field
-				$textRow.prev().focus;
-				// Remove the .num-row in this .text-row's data value
-
+		// Move the cursor to the previous input field
+		$textRow.prev().focus();
+		// Remove the .num-row in this .text-row's data value
+		$textRow.data("numRow").remove();
+		// Remove this .text-row
+		$textRow.remove();
+		// Update the row numbers
+		textEditor.updateNums();
 	},
 
 	updateNums: function () {
