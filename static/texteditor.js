@@ -42,6 +42,8 @@ var editor = {
 
 		// If the enter key was pressled
 		if (key.keyCode == 13) {
+			// Will probably need to stop propagation and
+			// default
 
 			// Add a line and updates the row numbers
 			addRow(textRow);
@@ -49,6 +51,9 @@ var editor = {
 
 		// If the delete key was pressed
 		else if (false){
+			// Will probably need to stop propagation and
+			// default
+
 			// When the user presses delete in an empty textfield
 			// Run a function in texteditor.js that removes a
 			// line and updates the row numbers
