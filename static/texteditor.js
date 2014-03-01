@@ -53,10 +53,6 @@ var textEditor = {
 		value of key.
 		*/
 
-		// AN ISSUE:
-		// The first text input does not have row one
-		// as it's data value
-
 		// We can do just this one instead of cycling through
 		// all of them. Once we fix that issue
 		// Always resize the number row to match the text row
