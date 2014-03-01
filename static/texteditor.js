@@ -64,7 +64,7 @@ var textEditor = {
 		});
 
 		// Expands the input textarea size to show all text
-		$textRow.elastic();
+		$textRow.autosize();
 
 		// If the enter key was pressled
 		if (key.keyCode == 13) {
