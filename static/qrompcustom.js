@@ -9,6 +9,7 @@
 
 $(document).ready(function () {
 
+// *** TEXT EDITOR *** \\
 	// Create the first editor row
 	textEditor.firstRow();
 
@@ -24,7 +25,16 @@ $(document).ready(function () {
 		// they hold a key down?
 		// Affect input fields
 		textEditor.keyFilter(key, $this);
-	});
+	})
+	.on("focus", ".text-row", function () {
+		var $this = $(this)
+		textEditor.activateRow($this);
+	})
+	.on("blur", ".text-row", function () {
+		var $this = $(this)
+		textEditor.deactivateRow($this);
+	})
+	;
 
 	// Testing
 	textEditor.updateNums();

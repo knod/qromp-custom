@@ -48,9 +48,6 @@ var textEditor = {
 		// Make sure .num-row height matches .text-row height
 		$newNumRow.outerHeight($newTextRow.outerHeight());
 
-		// Make the new row active
-		textEditor.activateRow($newTextRow);
-
 		// Do we want to focus the mouse here at the start?
 		$newTextRow.focus();
 	},
@@ -128,12 +125,8 @@ var textEditor = {
 
 		// Move the cursor to the new .text-row input
 		$newTextRow.focus();
-		// Activate the new row
-		textEditor.activateRow($newTextRow);
-		// Deactivate this row
-		textEditor.deactivateRow($textRow);
 
-		// Renumber the rows
+		// Re-number the rows
 		textEditor.updateNums();
 	},
 
