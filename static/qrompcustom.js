@@ -12,11 +12,14 @@ $(document).ready(function () {
 	// Create the first editor row
 	textEditor.firstRow();
 
+	// *Has* to be .on, *has* to be delegation
+	// Make a tutorial about that somewhere
 	// Depending on what key is pressed in an input field
-	$(".text-row").keydown(function (key) {
+	$("#text-areas").on("keydown", ".text-row", function (key) {
 
-		// Identify this textRow
+		// Identify this .text-row
 		var $this = $(this)
+
 		// ** Should thid be on keypress instead in case
 		// they hold a key down?
 		// Affect input fields
