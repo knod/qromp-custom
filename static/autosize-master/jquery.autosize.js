@@ -78,7 +78,7 @@
 			$ta.data('autosize', true);
 
 			if ($ta.css('box-sizing') === 'border-box' || $ta.css('-moz-box-sizing') === 'border-box' || $ta.css('-webkit-box-sizing') === 'border-box'){
-				boxOffset = ($ta.outerHeight() - $ta.height())/2;
+				boxOffset = $ta.outerHeight() - $ta.height();
 			}
 
 			// IE8 and lower return 'auto', which parses to NaN, if no min-height is set.
