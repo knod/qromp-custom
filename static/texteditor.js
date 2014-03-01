@@ -200,12 +200,6 @@ var textEditor = {
 		// Append new .num-row using the current .text-row's data
 		$textRow.data("numRow").after($newNumRow);
 
-		// Move the cursor to the new .text-row input
-		$newTextRow.focus();
-
-		// Re-number the rows
-		textEditor.updateNums();
-
 		// This only comes after?
 		// Expands the input textarea size to show all text
 		textEditor.resizeTextArea($newTextRow);
@@ -213,11 +207,18 @@ var textEditor = {
 		// !!! WHY IS SOMETHING STILL GETTING EXTRA PADDING?!!
 		// Not padding, size of .text-row changes after creation
 		// for some reason. So here we will resize everything on
-		// new row creation so that it isn't done with every keydown
+		// new row creation so we don't cycle through all of them
+		// with every keydown
 		$(".text-row").each(function () {
 			$this = $(this);
 			$this.data("numRow").outerHeight($this.outerHeight());
 		});
+
+		// Re-number the rows
+		textEditor.updateNums();
+
+		// Move the cursor to the new .text-row input
+		$newTextRow.focus();
 	},
 
 	removeRow: function ($textRow) {
