@@ -3,9 +3,18 @@
 * Manages the changing inputs of the visualizer's editor
 * 
 * ToDo:
-* 1. Do we want the bottom line of the enditor to remain
+* - FIGURE OUT WHY A TEXTAREA HAS AN EXTRA SPACE AT THE
+* BOTTOM AND HOW TO GET RID OF IT.
+* - Figure out why .num-row height doesn't change when
+* pasting text.
+* - Figure out why height of .text-row changes so that
+* we don't have to cycle through all the .text-rows to
+* get the right height.
+* - Do we want the bottom line of the editor to remain
 * blank for the evaluate button
-* 2. The first text input does not have row one
+* 
+* DONE:
+* [DONE] - The first text input does not have row one
 * as it's data value
 * 
 */
@@ -53,9 +62,7 @@ var textEditor = {
 		value of key.
 		*/
 
-		// We can do just this one instead of cycling through
-		// all of them. Once we fix that issue
-		// Always resize the number row to match the text row
+		// Always resize this .num-row to match this .text-row
 		// This only matters if we make text areas work
 		// HOW THE HELL DO WE GET RID OF THE LINE AT THE END
 		$textRow.data("numRow").outerHeight($textRow.outerHeight());
@@ -107,6 +114,17 @@ var textEditor = {
 		$textRow.after($newTextRow);
 		// Append new .num-row using the current .text-row's data
 		$textRow.data("numRow").after($newNumRow);
+
+		// XMake newnumRow height same as newTextRow
+		// !!! WHY IS SOMETHING STILL GETTING EXTRA PADDING?!!
+		// Not padding, size of .text-row changes after creation
+		// for some reason. So here we will resize everything on
+		// new row creation so that it isn't done with every keydown
+		$(".text-row").each(function () {
+			$this = $(this);
+			console.log("this class: " + $this.attr("class"));
+			$this.data("numRow").outerHeight($this.outerHeight());
+		});
 
 		// Move the cursor to the new .text-row input
 		$newTextRow.focus();
