@@ -5,6 +5,10 @@
 * ToDo:
 * - FIGURE OUT WHY A TEXTAREA HAS AN EXTRA SPACE AT THE
 * BOTTOM AND HOW TO GET RID OF IT.
+* - Make textareas empty on creation so that you don't
+* have to delete twice to delete an area you click into,
+* though this should be better once we make the initial
+* textarea just one line high. .val("") doesn't work.
 * - Figure out why .num-row height doesn't change when
 * pasting text.
 * - Figure out why height of .text-row changes so that
