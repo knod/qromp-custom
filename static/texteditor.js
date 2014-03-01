@@ -36,7 +36,7 @@ var editor = {
 		if (key.keyCode == 13) {
 
 			// Add a line and updates the row numbers
-			addLine(textRow);
+			addRow(textRow);
 		}
 
 		// If the delete key was pressed
@@ -51,7 +51,7 @@ var editor = {
 
 	},
 
-	addLine: function (textRow) {
+	addRow: function (textRow) {
 		/* (element) -> None
 
 		Adds divs below current input, one for the
@@ -79,7 +79,7 @@ var editor = {
 
 	},
 
-	removeLine: function (textRow) {
+	removeRow: function (textRow) {
 		/* (element) -> None
 
 		Deletes this input and it's matching .num-row,
