@@ -77,13 +77,19 @@ var textEditor = {
 		}
 
 		// If the delete key was pressed
-		else if (false){
+		else if (key.keyCode == 8) {
 			// Will probably need to stop propagation and
 			// default
 
-			// When the user presses delete in an empty textfield
-			// Run a function in texteditor.js that removes a
-			// line and updates the row numbers
+			// Do not remove the first row
+			if ($(".text-row").length - 1) {
+				// If there's no text in the row
+				if (!$textRow.val()) {
+					// Run a function in texteditor.js that removes a
+					textEditor.removeRow($textRow);
+					// line and updates the row numbers
+				}
+			}
 		}
 
 		// If the up arrow key was pressed
@@ -119,7 +125,6 @@ var textEditor = {
 		// new row creation so that it isn't done with every keydown
 		$(".text-row").each(function () {
 			$this = $(this);
-			console.log("this class: " + $this.attr("class"));
 			$this.data("numRow").outerHeight($this.outerHeight());
 		});
 
@@ -138,11 +143,10 @@ var textEditor = {
 		to the previous input field.
 		*/
 
-		// Do not remove the first row
+				// Move the cursor to the previous input field
+				$textRow.prev().focus;
+				// Remove the .num-row in this .text-row's data value
 
-		// Move the cursor to the previous input field
-		// Remove the .num-row in this .text-row's data value
-		// 
 	},
 
 	updateNums: function () {
