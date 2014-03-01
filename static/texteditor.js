@@ -2,6 +2,9 @@
 * texteditor.js
 * Manages the changing inputs of the visualizer's editor
 * 
+* Sources:
+* 1. http://stackoverflow.com/questions/7745867/how-do-you-get-the-cursor-position-in-a-textarea
+* 
 * ToDo:
 * - FIGURE OUT WHY A TEXTAREA HAS AN EXTRA SPACE AT THE
 * BOTTOM AND HOW TO GET RID OF IT.
@@ -104,7 +107,7 @@ var textEditor = {
 
 			// If this isn't the first row
 			if ( Math.max(0, $(".text-row").index($textRow)) ) {
-				// Get the cursor position
+				// Get the cursor position. Sources (1)
 				var cursorPos = $textRow.prop("selectionStart");
 				// Testing
 				console.log("cursorPos: " + cursorPos);
@@ -112,6 +115,7 @@ var textEditor = {
 				// If the cursor is at the start position
 				// Move the cursor to the previous input field
 				if (!cursorPos) {$textRow.prev().focus();}
+				// Set cursor position to end of textarea
 			}
 		}
 
@@ -124,14 +128,16 @@ var textEditor = {
 				var textLength = $textRow.val().length;
 				// Testing
 				console.log("num characters: " + textLength);
-				// Get the cursor position
-				var cursorPos = $textRow.prop("selectionStart");
+				// Get the cursor position. Sources (1)
+				// Selection end in case they had something selected
+				var cursorPos = $textRow.prop("selectionEnd");
 				// Testing
 				console.log("cursorPos: " + cursorPos);
 
 				// If the cursor is at the end of the text area
 				// Move the cursor to the next input field
 				if (cursorPos == textLength) {$textRow.next().focus();}
+				// Set cursor position to start of textarea
 			}
 		}
 
