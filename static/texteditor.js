@@ -14,7 +14,7 @@
 * after creation so that we don't have to cycle through
 * all the .text-rows to get the right height.
 * - Do we want the bottom line of the editor to remain
-* blank for the evaluate button
+* blank for the evaluate button?
 * 
 * DONE:
 * - [DONE, keypress propagation or automatic padding/
