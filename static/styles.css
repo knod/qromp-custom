@@ -10,6 +10,7 @@
 * button without resorting to hard pixels. Table?
 * - Fix text-row width so it actually fills the rest
 * of the space always
+* - Should we do box-sizing for all textareas?
 * 
 * DONE:
 * - [DONE] Fix editor height not matching visualizer height
@@ -153,12 +154,12 @@ a:hover {
 .text-row {
 	outline: none;
 	display: block;
-	margin: 0;
 	padding: 1px 6px;
 	width: 100%;
 	font-size: 15px;
 	border: none;
 	resize: none;
+	/* Maybe we should make this for all textareas. Will there be others? */
 	/* Sources (2) */
 	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
 	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
