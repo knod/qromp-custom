@@ -51,7 +51,7 @@ var textEditor = {
 
 		// Append them as the first in their divs
 		$("#text-areas").append($newTextRow);
-		$("#num-gutter").append($newNumRow);
+		$("#row-num-col").append($newNumRow);
 
 		// Size text area to contents
 		textEditor.resizeTextArea($newTextRow);
