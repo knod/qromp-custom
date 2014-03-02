@@ -80,10 +80,10 @@ var textEditor = {
 		// Sizes the textarea to the contents
 		textEditor.resizeTextArea($textRow);
 		// Always resize this .num-row to match this .text-row
-		// This only matters if we make text areas work
+		// for when a keypress rolls wraps to the next line down
 		$textRow.data("numRow").outerHeight($textRow.outerHeight());
 
-		// If the enter key was pressled
+		// If the enter key was pressed
 		if (key.keyCode == 13) {
 
 			// Add a line and updates the row numbers
@@ -138,7 +138,7 @@ var textEditor = {
 					// Sources (2)
 					.prop("setSelectionRange", textLength, textLength);
 
-					// For when textarea has/had multiple paragraphs
+					// For when textarea has/had multiple lines
 					key.stopPropagation();
 					key.preventDefault();
 				}
@@ -169,7 +169,7 @@ var textEditor = {
 					// Sources (2)
 					.prop("setSelectionRange", 0, 0);
 
-					// For when textarea has/had multiple paragraphs
+					// For when textarea has/had multiple lines
 					key.stopPropagation();
 					key.preventDefault();
 				}
