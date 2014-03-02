@@ -160,11 +160,18 @@ a:hover {
 	width: 46em;
 	background-color: #F5F1FA;
 	margin-left: 1em;
-	padding: .5em;
 }
 
-#visualizer>span {
-	font-size: 1.8em;
+#visualizer>div {
+	margin: .5em;
+}
+
+#visualizer-buffer>span {
+	font-size: 1.5em;
+}
+
+#visualizer-buffer {
+
 }
 
 #qubitsInput {
