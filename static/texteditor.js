@@ -89,6 +89,10 @@ var textEditor = {
 
 			// Add a line and updates the row numbers
 			textEditor.addRow($textRow);
+
+			// Don't make a new paragraph
+			key.stopPropagation();
+			key.preventDefault();
 		}
 
 		// If the delete key was pressed
@@ -105,6 +109,11 @@ var textEditor = {
 					// line and updates the row numbers
 				}
 			}
+
+			// Don't delete more than you should or something
+			key.stopPropagation();
+			// This would make it so you can't delete ever
+			// key.preventDefault();
 		}
 
 		// If the up arrow key was pressed
