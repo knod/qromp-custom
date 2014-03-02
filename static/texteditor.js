@@ -7,21 +7,23 @@
 * 2. http://stackoverflow.com/questions/6683046/how-do-i-move-the-cursor-to-the-front-of-a-textbox-which-has-text-in-it
 * 
 * ToDo:
-* - FIGURE OUT WHY A TEXTAREA HAS AN EXTRA SPACE AT THE
-* BOTTOM AND HOW TO GET RID OF IT.
-* - Make textareas empty on creation so that you don't
-* have to delete twice to delete an area you click into,
-* though this should be better once we make the initial
-* textarea just one line high. .val("") doesn't work.
 * - Figure out why .num-row height doesn't change when
-* pasting text or deleting selected text.
-* - Figure out why height of .text-row changes so that
-* we don't have to cycle through all the .text-rows to
-* get the right height.
+* pasting text or deleting selected text. (on keyup?)
+* - Figure out why height of .text-row changes slightly
+* after creation so that we don't have to cycle through
+* all the .text-rows to get the right height.
 * - Do we want the bottom line of the editor to remain
 * blank for the evaluate button
 * 
 * DONE:
+* - [DONE, keypress propagation or automatic padding/
+* height] FIGURE OUT WHY A TEXTAREA HAS AN EXTRA SPACE
+*  AT THE BOTTOM AND HOW TO GET RID OF IT.
+* - [DONE, keypress propagation] Make textareas empty
+* on creation so that you don't have to delete twice to
+* delete an area you click into, though this should be
+* better once we make the initial textarea just one line
+* high. .val("") doesn't work.
 * [DONE] - The first text input does not have row one
 * as it's data value
 * 
