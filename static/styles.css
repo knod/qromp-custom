@@ -8,11 +8,11 @@
 * ToDo:
 * - Figure out how to stack #scrollable-area on top of eval
 * button without resorting to hard pixels. Table?
-* - Fix text-row width so it actually fills the rest
-* of the space always
 * - Should we do box-sizing for all textareas?
 * 
 * DONE:
+* - [DONE] Fix text-row width so it actually fills the rest
+* of the space always
 * - [DONE] Fix editor height not matching visualizer height
 * 
 */
@@ -110,7 +110,7 @@ a:hover {
 }
 
 #scrollable-area {
-	height: 43.8em;
+	height: 43.6em; /* Space left for evaluate at bottom */
 	overflow: auto;
 }
 
