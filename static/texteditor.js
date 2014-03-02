@@ -84,18 +84,16 @@ var textEditor = {
 		// for when a keypress rolls wraps to the next line down
 		$textRow.data("numRow").outerHeight($textRow.outerHeight());
 
-		// If the enter key was pressed
+		// ENTER
 		if (key.keyCode == 13) {
-
 			// Add a line and updates the row numbers
 			textEditor.addRow($textRow);
-
 			// Don't make a new paragraph
 			key.stopPropagation();
 			key.preventDefault();
 		}
 
-		// If the delete key was pressed
+		// DELETE
 		else if (key.keyCode == 8) {
 
 			// Do not remove the first row
@@ -109,11 +107,10 @@ var textEditor = {
 			}
 			// Don't delete more than you should or something
 			key.stopPropagation();
-			// This would make it so you can't delete ever
-			// key.preventDefault();
+			// .preventDefault would prevent all deleting
 		}
 
-		// If the up arrow key was pressed
+		// UP ARROW
 		else if (key.keyCode == 38) {
 			// If this isn't the first row
 			if ( Math.max(0, $(".text-row").index($textRow)) ) {
@@ -146,11 +143,8 @@ var textEditor = {
 			}
 		}
 
-		// If the down arrow key was pressed
+		// DOWN ARROW
 		else if (key.keyCode == 40) {
-
-
-
 			// If this isn't the last row
 			if ( $(".text-row").index($textRow) !=
 				($(".text-row").length - 1) ) {
@@ -176,7 +170,6 @@ var textEditor = {
 				}
 			}
 		}
-
 	},
 
 	addRow: function ($textRow) {

@@ -16,16 +16,20 @@ $(document).ready(function () {
 	// *Has* to be .on, *has* to be delegation
 	// Make a tutorial about that somewhere
 	// Depending on what key is pressed in an input field
-	$("#text-areas").on("keydown", ".text-row", function (key) {
+	$("#text-areas")
+	.on("keydown", ".text-row", function (key) {
 
 		// Identify this .text-row
 		var $this = $(this);
-
-		// ** Should thid be on keypress instead in case
+		// ** Should this be on keypress instead in case
 		// they hold a key down?
-		// Affect input fields (not jQuery object for regular
-		// js functions)
+		// Affect input fields
 		textEditor.keyFilter(key, $this);
+	})
+	.on("keyup", ".text-row", function (key) {
+		// Help on resizing after deleting section or pasting
+		// Not completely though 
+		textEditor.resizeTextArea($(this));
 	})
 	.on("focus", ".text-row", function () {
 		// Color the focused row the active colors
