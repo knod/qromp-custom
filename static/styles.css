@@ -110,6 +110,8 @@ a:hover {
 }
 
 #scrollable-area {
+	/* em means on cmd+ eval button still has room, I think */
+	/* Nope, percent worked just as well */
 	height: 43.6em; /* Space left for evaluate at bottom */
 	overflow: auto;
 }
