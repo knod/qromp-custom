@@ -85,8 +85,6 @@ var textEditor = {
 
 		// If the enter key was pressled
 		if (key.keyCode == 13) {
-			// Will probably need to stop propagation and
-			// default
 
 			// Add a line and updates the row numbers
 			textEditor.addRow($textRow);
@@ -98,19 +96,16 @@ var textEditor = {
 
 		// If the delete key was pressed
 		else if (key.keyCode == 8) {
-			// Will probably need to stop propagation and
-			// default
 
 			// Do not remove the first row
 			if ($(".text-row").length - 1) {
 				// If there's no text in the row
 				if (!$textRow.val()) {
 					// Run a function in texteditor.js that removes a
-					textEditor.removeRow($textRow);
 					// line and updates the row numbers
+					textEditor.removeRow($textRow);
 				}
 			}
-
 			// Don't delete more than you should or something
 			key.stopPropagation();
 			// This would make it so you can't delete ever
@@ -139,14 +134,11 @@ var textEditor = {
 					$textRow.prev()
 					// Move the cursor to the prev input field
 					.focus()
-					// [key propagation] !!! NONE OF THIS IS WORKING !!!
 					// Set cursor position to end of prev textarea.
 					// Sources (2)
 					.prop("setSelectionRange", textLength, textLength);
-					// .prop("selectionStart", textLength)
-					// .prop("selectionEnd", textLength);
 
-					// For when textarea has/had multiple rows
+					// For when textarea has/had multiple paragraphs
 					key.stopPropagation();
 					key.preventDefault();
 				}
@@ -175,10 +167,9 @@ var textEditor = {
 					.focus()
 					// Set cursor position to start of next textarea.
 					// Sources (2)
-					.prop("selectionStart", 0)
-					.prop("selectionEnd", 0);
+					.prop("setSelectionRange", 0, 0);
 
-					// For when textarea has/had multiple rows
+					// For when textarea has/had multiple paragraphs
 					key.stopPropagation();
 					key.preventDefault();
 				}
@@ -303,7 +294,7 @@ var textEditor = {
 	    // elemToSize.style.height = "1px";
 	    // jQuery way:
 	    $elemToSize.css("height","1px");
-	    // Gets, basically, the height of the contents
+	    // Gets, basically, the height of the contents with some minimum
 	    // Don't know if this will actually make it the size we want,
 	    // but meh, it'll be close
 	    // elemToSize.style.height = (elemToSize.scrollHeight)+"px";
