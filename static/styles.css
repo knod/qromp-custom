@@ -1,5 +1,8 @@
 /*
 * 
+* Sources:
+* 1. http://stackoverflow.com/questions/15076201/html-css-sticky-footer-growing-content
+* 
 * ToDo:
 * - Fix text-row so it actually fills the rest
 * of the space
@@ -91,13 +94,40 @@ a:hover {
 
 #editor {
 	position: relative;
-	overflow: auto;
+	overflow: hidden;
+	height: 100%;
 	border: 1px solid #dddddd;
-	box-sizing: border-box;
+	/*box-sizing: border-box;*/
+}
+/******/
+#scrollable-area {
+	height: 43.8em;
+	overflow: auto;
+}
+
+#reference {
+	position: absolute;
+	right: 0;
+	top: 0;
 }
 
 #textInput {
+	position: relative;
+	width: 100%;
+	/*height: 43.5em;*/
+	/*border-bottom: 1px solid #dddddd;*/
+
+	/*Restore*/
+	/*float: left;*/
+	/*height: 43.8em;*/
+	/*clear: all;*/
+	overflow: hidden;
+	min-height: 43.8em;
+	/* Sources (1) */
+	/*min-height: 100%;*/
+	height: auto !important;
 	height: 100%;
+	margin: 0 auto -100px;
 }
 
 #textInput>div {
@@ -105,7 +135,7 @@ a:hover {
 }
 
 #num-gutter {
-	height: 100%;
+	/*height: 100%;*/
 	width: 22px;
 	float: left;
 	background: #f0f0f0;
@@ -115,7 +145,7 @@ a:hover {
 	height: 100%;
 	width: auto;
 	font-size: 15px;
-	overflow: scroll;
+	overflow: hidden;
 	/*background: lightblue;*/
 }
 
@@ -145,11 +175,24 @@ a:hover {
 	height: 100%;
 }*/
 
-#evaluate {
-	position: absolute;
+/******/
+#editor-footer {
+	/*position: absolute;
 	bottom: 0;
-	right: 0;
-	z-index: 10;
+	right: 0;*/
+	/*To Restore*/
+	/*z-index: 10;
+	width: 100%;*/
+	text-align: right;
+	/* Sources (1) */
+	width: 100%;
+	/*height: 10%;*/
+	/*position: relative;*/
+	/*bottom: 0;*/
+}
+
+#evaluate {
+	position:relative;
 	border: 0;
 	cursor: pointer;
 }
@@ -190,4 +233,4 @@ a:hover {
 .ace_gutter-cell {
 	padding-left: .6em !important;
 	padding-right: .6em !important;
-}*/
+}
