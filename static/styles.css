@@ -99,20 +99,14 @@ a:hover {
 	border: 1px solid #dddddd;
 	/*box-sizing: border-box;*/
 }
-/******/
+
 #scrollable-area {
 	height: 43.8em;
 	overflow: auto;
 }
 
-#reference {
-	position: absolute;
-	right: 0;
-	top: 0;
-}
-
 #textInput {
-	position: relative;
+	position: relative; /*Without this, #num-gutter extends to bottom*/
 	width: 100%;
 	/*height: 43.5em;*/
 	/*border-bottom: 1px solid #dddddd;*/
@@ -123,22 +117,33 @@ a:hover {
 	/*clear: all;*/
 	overflow: hidden;
 	min-height: 43.8em;
+
 	/* Sources (1) */
 	/*min-height: 100%;*/
-	height: auto !important;
-	height: 100%;
-	margin: 0 auto -100px;
+	/*height: auto !important;*/
+	/*height: 100%;*/
+	/*margin: 0 auto -100px;*/
 }
 
 #textInput>div {
 	font-size: 15px;
 }
 
+#num-gutter {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 22px; /*Must be same as #row-num-col*/
+	height: 100%;
+	background: #f0f0f0;
+	z-index: -1; /*Somehow this works even though sibs have no position:absolute*/
+}
+
 #row-num-col {
 	/*height: 100%;*/
-	width: 22px;
+	width: 22px; /*Must be same as #num-gutter*/
 	float: left;
-	background: #f0f0f0;
+	/*background: #f0f0f0;*/
 }
 
 #text-areas {
@@ -166,16 +171,12 @@ a:hover {
 	resize: none;
 }
 
-/*#z-test {
-	position: relative;
-	z-index:2;
-	width: 22px;
-	float: left;
-	background: red;
-	height: 100%;
-}*/
+#reference {
+	position: absolute;
+	right: 0;
+	top: 0;
+}
 
-/******/
 #editor-footer {
 	/*position: absolute;
 	bottom: 0;
