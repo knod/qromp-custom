@@ -5,9 +5,13 @@
 * 1. http://stackoverflow.com/questions/15076201/html-css-sticky-footer-growing-content
 * 
 * ToDo:
-* - Fix text-row so it actually fills the rest
-* of the space
-* - Fix editor height not matching visualizer height
+* - Figure out how to stack #scrollable-area on top of eval
+* button without resorting to hard pixels. Table?
+* - Fix text-row width so it actually fills the rest
+* of the space always
+* 
+* DONE:
+* - [DONE] Fix editor height not matching visualizer height
 * 
 */
 
