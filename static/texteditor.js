@@ -56,10 +56,8 @@ var textEditor = {
 		$("#text-areas").append($newTextRow);
 		$("#row-num-col").append($newNumRow);
 
-		// Size text area to contents
-		textEditor.resizeTextArea($newTextRow);
-		// Make sure .num-row height matches .text-row height
-		// $newNumRow.outerHeight($newTextRow.outerHeight());
+		// Size textarea and it's .num-row to contents
+		textEditor.resizeRow($newTextRow);
 
 		// Do we want to focus the mouse here at the start?
 		$newTextRow.focus();
@@ -74,15 +72,12 @@ var textEditor = {
 		Resizes current .num-row on any keypress, calls
 		further function depending on value of key. Also
 		resizes current row on 
-		enter: 13, delete: 8, left: 37, up: 38,
-		right: 39, down: 40,
+		enter: 13, delete: 8, up: 38, down: 40,
 		*/
 
-		// Sizes the textarea to the contents
-		textEditor.resizeTextArea($textRow);
-		// Always resize this .num-row to match this .text-row
+		// Size textarea and it's .num-row to contents
 		// for when a keypress rolls wraps to the next line down
-		$textRow.data("numRow").outerHeight($textRow.outerHeight());
+		textEditor.resizeRow($textRow);
 
 		// ENTER
 		if (key.keyCode == 13) {
@@ -193,9 +188,10 @@ var textEditor = {
 		// Append new .num-row using the current .text-row's data
 		$textRow.data("numRow").after($newNumRow);
 
-		// This only comes after?
 		// Expands the input textarea size to show all text
 		textEditor.resizeTextArea($newTextRow);
+		// Should this also resize row number?
+		// textEditor.resizeRow($newTextRow);
 
 		// Still getting weird extra padding, so resizing is
 		// needed, but it doesn't need to happen to all of them
@@ -203,7 +199,6 @@ var textEditor = {
 
 		// Re-number the rows
 		textEditor.updateNums();
-
 		// Move the cursor to the new .text-row input
 		$newTextRow.focus();
 	},
@@ -270,8 +265,8 @@ var textEditor = {
 
 		/* (jQuery collection) -> (None)
 
-		Resizes the DOM element, not jQuery element/collection,
-		elemToSize to fit it's contents.
+		Resizes the jQuery element/collection elemToSize to
+		fit it's contents, minimum one row high.
 		*/
 
 		// Too stupid to figure out how to pass DOM elements
@@ -288,5 +283,16 @@ var textEditor = {
 	    // elemToSize.style.height = (elemToSize.scrollHeight)+"px";
 	    // jQuery way:
 		$elemToSize.css("height", ($elemToSize.prop("scrollHeight"))+"px");
+	},
+
+	resizeRow: function ($rowToSize) {
+		/* ($ collection) -> None
+
+		Resizes $rowToSize to fit contents, minimum of one
+		row, then resize's that row's row number.
+		*/
+
+		textEditor.resizeTextArea($rowToSize);
+		$rowToSize.data("numRow").outerHeight($rowToSize.outerHeight());
 	},
 }

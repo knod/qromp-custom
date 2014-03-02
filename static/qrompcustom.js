@@ -27,9 +27,10 @@ $(document).ready(function () {
 		textEditor.keyFilter(key, $this);
 	})
 	.on("keyup", ".text-row", function (key) {
-		// Help on resizing after deleting section or pasting
-		// Not completely though 
-		textEditor.resizeTextArea($(this));
+		// Help on resizing after deleting section or pasting,
+		// esp with clicking out of the area after
+		// Not completely though
+		textEditor.resizeRow($(this));
 	})
 	.on("focus", ".text-row", function () {
 		// Color the focused row the active colors
