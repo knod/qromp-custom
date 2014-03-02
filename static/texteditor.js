@@ -81,7 +81,6 @@ var textEditor = {
 		textEditor.resizeTextArea($textRow);
 		// Always resize this .num-row to match this .text-row
 		// This only matters if we make text areas work
-		// HOW THE HELL DO WE GET RID OF THE LINE AT THE END
 		$textRow.data("numRow").outerHeight($textRow.outerHeight());
 
 		// If the enter key was pressled
@@ -140,7 +139,7 @@ var textEditor = {
 					$textRow.prev()
 					// Move the cursor to the prev input field
 					.focus()
-					// !!! NONE OF THIS IS WORKING !!!
+					// [key propagation] !!! NONE OF THIS IS WORKING !!!
 					// Set cursor position to end of prev textarea.
 					// Sources (2)
 					.prop("setSelectionRange", textLength, textLength);
@@ -176,8 +175,6 @@ var textEditor = {
 					.focus()
 					// Set cursor position to start of next textarea.
 					// Sources (2)
-					// Unfortunately, it goes to the second line
-					// in the text area
 					.prop("selectionStart", 0)
 					.prop("selectionEnd", 0);
 
