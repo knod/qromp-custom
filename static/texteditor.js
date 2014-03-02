@@ -9,7 +9,8 @@
 * ToDo:
 * - Figure out why .num-row height doesn't change when
 * pasting text or deleting selected text. (on keyup?)
-* - Figure out why height of .text-row changes slightly
+* - [Not done, somewhat better somehow] Figure out why
+* height of .text-row changes slightly
 * after creation so that we don't have to cycle through
 * all the .text-rows to get the right height.
 * - Do we want the bottom line of the editor to remain
@@ -58,7 +59,7 @@ var textEditor = {
 		// Size text area to contents
 		textEditor.resizeTextArea($newTextRow);
 		// Make sure .num-row height matches .text-row height
-		$newNumRow.outerHeight($newTextRow.outerHeight());
+		// $newNumRow.outerHeight($newTextRow.outerHeight());
 
 		// Do we want to focus the mouse here at the start?
 		$newTextRow.focus();
@@ -202,16 +203,10 @@ var textEditor = {
 		// This only comes after?
 		// Expands the input textarea size to show all text
 		textEditor.resizeTextArea($newTextRow);
-		// XMake newnumRow height same as newTextRow
-		// !!! WHY IS SOMETHING STILL GETTING EXTRA PADDING?!!
-		// Not padding, size of .text-row changes after creation
-		// for some reason. So here we will resize everything on
-		// new row creation so we don't cycle through all of them
-		// with every keydown
-		$(".text-row").each(function () {
-			$this = $(this);
-			$this.data("numRow").outerHeight($this.outerHeight());
-		});
+
+		// Still getting weird extra padding, so resizing is
+		// needed, but it doesn't need to happen to all of them
+		// anymore, just one at a time. Why?
 
 		// Re-number the rows
 		textEditor.updateNums();
